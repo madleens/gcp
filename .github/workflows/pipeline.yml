@@ -30,6 +30,9 @@ jobs:
     - id: 'init'
       name: 'terraform init'
       run: terraform init
+    - id: 'plan'
+      name: 'terraform plan'
+      run: terraform plan
 
   
      
