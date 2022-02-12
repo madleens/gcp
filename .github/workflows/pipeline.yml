@@ -18,6 +18,9 @@ jobs:
           path: terraform
   deploy_terraform:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform
     steps:
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
