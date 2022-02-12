@@ -43,6 +43,6 @@ resource "google_service_account_iam_binding" "github_actions" {
   service_account_id = "projects/${var.project_id}/serviceAccounts/${google_service_account.github_actions.email}"
   role               = "roles/iam.workloadIdentityUser"
   members = [
-    "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/${var.github_org}/${var.github_repo}",
+    "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/${var.github_owner}/${var.github_repo}",
   ]
 }
