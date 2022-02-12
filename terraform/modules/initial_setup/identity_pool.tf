@@ -29,8 +29,6 @@ resource "google_iam_workload_identity_pool_provider" "github" {
     "attribute.actor"      = "assertion.actor"
     "attribute.repository" = "assertion.repository"
     "attribute.ref_type"   = "assertion.ref_type"
-
-
   }
   oidc {
     allowed_audiences = var.allowed_audiences
