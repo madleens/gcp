@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 on:
   push:
@@ -7,8 +5,6 @@ on:
   pull_request:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 jobs:
   format-checks:
@@ -21,4 +17,23 @@ jobs:
         uses: dflook/terraform-fmt@v1
         with:
           path: terraform
+  deploy_terraform:
+    runs-on: ubuntu-latest
+    steps:
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0.4.0'
+      with:
+        workload_identity_provider: '${{ GCP_SERVICE_ACCOUNT_EMAIL }}'
+        service_account: '${{ WORKLOAD_IDENTITY_PROVIDER }}'
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+    - id: 'init'
+      name: 'terraform init'
+      run: terraform init
+
+  
+     
+      
+
 
