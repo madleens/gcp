@@ -36,7 +36,10 @@ jobs:
     - id: 'plan'
       name: 'terraform plan'
       run: terraform plan
-
+    - id: 'apply'
+      name: 'terraform apply'
+      run: terraform apply
+      if: github.ref == 'refs/heads/main'
   
      
       
