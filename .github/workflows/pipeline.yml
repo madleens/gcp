@@ -23,8 +23,8 @@ jobs:
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v0.4.0'
       with:
-        workload_identity_provider: '${{ GCP_SERVICE_ACCOUNT_EMAIL }}'
-        service_account: '${{ WORKLOAD_IDENTITY_PROVIDER }}'
+        workload_identity_provider: '${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}'
+        service_account: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
     - id: 'init'
