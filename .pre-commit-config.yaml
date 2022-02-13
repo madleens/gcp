@@ -18,5 +18,5 @@ repos:
   hooks:
   - id: flake8
 - repo: https://github.com/antonbabenko/pre-commit-terraform
-  hocks:
+  hooks:
   - id: terraform_fmt
