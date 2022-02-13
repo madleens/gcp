@@ -32,8 +32,6 @@ jobs:
       with:
         workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
         service_account: '${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}'
-    - name: "test"
-      run: gcloud compute instances list --project=${{ secrets.GCP_PROJECT_ID }}
     - id: 'secrets'
       uses: 'google-github-actions/get-secretmanager-secrets@v0'
       with:
