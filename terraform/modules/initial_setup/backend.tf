@@ -28,7 +28,7 @@ resource "google_secret_manager_secret" "config_tfvars" {
 
 resource "google_secret_manager_secret_version" "config" {
   secret      = google_secret_manager_secret.config_tfvars.id
-  secret_data = "bucket = ${google_storage_bucket.backend.name} \nprefix  =\"terraform/state\""
+  secret_data = "bucket = \"${google_storage_bucket.backend.name}\" \nprefix = \"terraform/state\""
   lifecycle {
     ignore_changes = [
       secret_data,
@@ -46,7 +46,7 @@ resource "google_secret_manager_secret" "terraform_tfvars" {
 
 resource "google_secret_manager_secret_version" "terraform" {
   secret      = google_secret_manager_secret.terraform_tfvars.id
-  secret_data = "project_id=\"${var.project_id}\""
+  secret_data = "project_id = \"${var.project_id}\""
   lifecycle {
     ignore_changes = [
       secret_data,
