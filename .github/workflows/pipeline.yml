@@ -32,18 +32,16 @@ jobs:
       with:
         workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
         service_account: '${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}'
-    - id: 'secrets'
-      uses: 'google-github-actions/get-secretmanager-secrets@v0'
-      with:
-        secrets: |-
-          backend_config:${{ secrets.GCP_PROJECT_ID }}/config_tfvars
-          terraform_tfvars:${{ secrets.GCP_PROJECT_ID }}/terraform_tfvars
+    - id: 'get_tfavrs'
+      name: 'get tfvars file from secret manager'
+      run: |
+      gcloud secrets versions access version-id --secret=config_tfavrs --project=${{ secrets.GCP_PROJECT_ID }} > config.tfvars
+      gcloud secrets versions access version-id --secret=terraform_tfavrs --project=${{ secrets.GCP_PROJECT_ID }} > terraform.tfvars
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
     - id: 'init'
       name: 'terraform init'
       run: |
-        echo "${{ steps.secrets.outputs.backend_config }}" > config.tfvars
         terraform init -backend-config=config.tfvars
     - id: 'plan'
       name: 'terraform plan'
