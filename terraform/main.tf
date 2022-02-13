@@ -1,7 +1,7 @@
 locals {
-  service_list = [
+  service_list = toset([
     "compute.googleapis.com",
-  ]
+  ])
 }
 
 resource "google_project_service" "this" {
