@@ -32,14 +32,14 @@ jobs:
       with:
         workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
         service_account: '${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}'
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
     - id: 'secrets'
       uses: 'google-github-actions/get-secretmanager-secrets@v0'
       with:
         secrets: |-
           backend_config:${{ secrets.GCP_PROJECT_ID }}/config_tfvars
           terraform_tfvars:${{ secrets.GCP_PROJECT_ID }}/terraform_tfvars
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
     - id: 'init'
       name: 'terraform init'
       run: |-
