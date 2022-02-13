@@ -14,7 +14,7 @@ resource "random_string" "backend_bucket" {
 
 resource "google_secret_manager_secret" "backend_config" {
   project   = var.project_id
-  secret_id = "config_tf"
+  secret_id = "config_tfvars"
   replication {
     automatic = true
   }
