@@ -32,7 +32,7 @@ jobs:
       with:
         workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
         service_account: '${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}'
-    - id: 'get_tfavrs'
+    - id: 'get_tfvars'
       name: 'get tfvars file from secret manager'
       run: |
         gcloud secrets versions access latest --secret=config_tfvars --project=${{ secrets.GCP_PROJECT_ID }} > config.tfvars
