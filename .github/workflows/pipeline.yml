@@ -41,7 +41,9 @@ jobs:
           backend_config:${{ secrets.GCP_PROJECT_ID }}/config_tfvars
     - id: 'init'
       name: 'terraform init'
-      run: terraform init -backend-config= ${{ steps.secrets.outputs.backend_config }}
+      run: |-
+        echo ${{ steps.secrets.outputs.backend_config }} > config.tfvars
+        terraform init -backend-config=config.tfvars
     - id: 'plan'
       name: 'terraform plan'
       run: terraform plan
