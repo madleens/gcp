@@ -39,6 +39,7 @@ jobs:
       with:
         secrets: |-
           backend_config:${{ secrets.GCP_PROJECT_ID }}/config_tfvars
+          terraform_tfvars:${{ secrets.GCP_PROJECT_ID }}/terraform_tfvars
     - id: 'init'
       name: 'terraform init'
       run: |-
