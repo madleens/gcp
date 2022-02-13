@@ -35,8 +35,8 @@ jobs:
     - id: 'get_tfavrs'
       name: 'get tfvars file from secret manager'
       run: |
-        gcloud secrets versions access latest --secret=config_tfavrs --project=${{ secrets.GCP_PROJECT_ID }} > config.tfvars
-        gcloud secrets versions access latest --secret=terraform_tfavrs --project=${{ secrets.GCP_PROJECT_ID }} > terraform.tfvars
+        gcloud secrets versions access latest --secret=config_tfvars --project=${{ secrets.GCP_PROJECT_ID }} > config.tfvars
+        gcloud secrets versions access latest --secret=terraform_tfvars --project=${{ secrets.GCP_PROJECT_ID }} > terraform.tfvars
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
     - id: 'init'
