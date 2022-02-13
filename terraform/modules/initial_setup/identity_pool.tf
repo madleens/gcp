@@ -31,8 +31,7 @@ resource "google_iam_workload_identity_pool_provider" "github" {
     "attribute.ref_type"   = "assertion.ref_type"
   }
   oidc {
-    issuer_uri        = "https://token.actions.githubusercontent.com"
-    allowed_audiences = var.allowed_audiences
+    issuer_uri = "https://token.actions.githubusercontent.com"
   }
   attribute_condition = var.attribute_condition
 }

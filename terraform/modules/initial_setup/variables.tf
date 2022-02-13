@@ -10,10 +10,6 @@ variable "github_repo" {
   type = string
 }
 
-variable "allowed_audiences" {
-  type = list(string)
-}
-
 variable "github_owner" {
   type = string
 }
