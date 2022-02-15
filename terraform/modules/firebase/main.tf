@@ -12,7 +12,7 @@ resource "google_project_service" "this" {
   disable_on_destroy = false
 }
 
-resource "google_firebase_project" "default" {
+resource "google_firebase_project" "this" {
   provider = google-beta
   project  = var.project_id
 }
