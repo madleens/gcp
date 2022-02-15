@@ -10,3 +10,9 @@ resource "google_project_service" "this" {
   project = var.project_id
   service = each.value
 }
+
+module "firebase" {
+  source = "./modules/firebase"
+
+  project_id = var.project_ids
+}
