@@ -14,5 +14,5 @@ resource "google_project_service" "this" {
 module "firebase" {
   source = "./modules/firebase"
 
-  project_id = var.project_ids
+  project_id = var.project_id
 }
